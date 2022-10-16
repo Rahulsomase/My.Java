@@ -1,0 +1,42 @@
+Q4/- What is a Race condition, How will you solve the Race condition,explain with an
+Example.
+Ans:-
+
+Race condition in Java is a type of concurrency bug or issue that is introduced in your program
+because of parallel execution of your program by multiple threads at the same time, 
+Since Java is a multi-threaded programming language hence the risk of Race condition is higher
+in Java which demands a clear understanding of what causes a race condition and how to avoid that.
+  Anyway, Race conditions are just one of the hazards or risks presented by the use of multi-threading in Java just like deadlock in Java. 
+  Race conditions occur when two threads operate on the same object without proper synchronization and their operation interleaves on each other.
+  
+  
+  Example:-
+  
+  Void bankAccount(double money)
+
+{
+shared= shared + money
+}
+
+Here we have used two variables. Suppose shared is a shared variable. Now let’s say that bankAccount function is called for its execution. The statements of this function will be executed in the following sequence;
+
+The previous value of the shared variable will be loaded into one of the registers of the CPU.
+The value of money variable will be loaded into some another register.
+The values of two variables will be stored in two registers and the result will be calculated.
+Now, assign the result to the variable share.
+For example, there are two processes P1 and P2 and both P1 and P2 processes are willing to call the function bankAccount concurrently.
+
+suppose P1 call the function of bank account by passing the parameters of the function and the value of the parameter is 200 and similarly, P2 call the function of the bankAccount by passing the value of the parameter as 100.
+
+Now, let’s suppose that the previous value of the shared variable is 1100.   in this example we are resuming that process P1 and P2 are executed on the different processors.
+
+The result can be looks like;
+
+Process P1 loads 1100 into the CPU register
+P2 will load 1100 into its register.
+P1 will add 200 to its register then the result will be 1300
+The process P2 will add 100 its register and the calculated result will be 1200
+The process P1 will store 1400 in shared variable and the process  P2 will store 1150 in a shared variable.
+
+
+

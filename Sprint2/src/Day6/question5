@@ -1,0 +1,21 @@
+Q5/- What is the Difference between the sleep and join method .
+Ans:-
+
+
+sleep:
+1) It belongs to the ‘Thread’ class.
+2) It doesn’t release the lock on the object when synchronization is in process.
+3) It is a static method.
+4) From a synchronized context, there is no need to call the ‘sleep’ method.
+5) This method has three overloaded methods, they are −
+6) sleep(long millis)millis: milliseconds
+7) sleep(long millis,int nanos) nanos: Nanoseconds
+
+
+
+Join:
+1) join() method, on the other hand, is also defined in java.lang package but in Thread class.
+2) join() is used for adding sequencing between multiple threads, one thread starts execution after first thread execution finished.
+3) we can not break the waiting imposed by join() method without unless or interruption the thread on which join is called has execution finished.
+4) no such condition required for calling join() method and we can call join() method with and without synchronized context in Java..
+5) calling join() method doesn't release any monitor or lock.

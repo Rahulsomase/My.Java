@@ -1,0 +1,16 @@
+Q1/ What is the difference between a synchronized method and a synchronized block?
+Ans:-
+
+
+synchronized method:-
+1) A synchronized method uses the method receiver as a lock, 'this' for non static methods and the enclosing class for static methods.
+2) Synchronized blocks uses the expression as a lock.
+3) A synchronized method locks on the object instance the method is contained in while a synchronized block can lock on ANY object.
+4) For synchronized methods, the lock will be held throughout the method scope. 
+
+
+Synchronized block:-
+1) Synchronized block can throw NullPointerException if the expression provided as parameter evaluates to null, which is not the case with synchronized methods.
+2) Synchronized block provides granular control over lock, as you can use any lock to provide mutual exclusion to critical section code. 
+3) Synchronized method always lock either on current object or class level lock, if its static synchronized method.
+4) while in the synchronized block, the lock is held only during that block scope also known as critical section.

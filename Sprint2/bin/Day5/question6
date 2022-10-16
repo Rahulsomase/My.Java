@@ -1,0 +1,44 @@
+Q6) What if we call Java run() method directly instead start() method?
+ANS:-
+
+When we call the start() method on a thread it causes the thread to begin execution and run() 
+method of a thread is called by the Java Virtual Machine(JVM). If we call directly the run() method,
+it will be treated as a normal overridden method of a thread class (or runnable interface) and it will
+ be executed within the context of the current thread, not in a new thread.
+
+Example
+public class CallRunMethodTest extends Thread {
+   @Override
+   public void run() {
+      System.out.println("In the run() method: " + Thread.currentThread().getName());
+      for(int i = 0; i < 5 ; i++) {
+         System.out.println("i: " + i);
+         try {
+            Thread.sleep(300);
+         } catch (InterruptedException ie) {
+            ie.printStackTrace();
+         }
+      }
+  }
+   public static void main(String[] args) {
+      CallRunMethodTest t1 = new CallRunMethodTest();
+      CallRunMethodTest t2 = new CallRunMethodTest();
+      t1.run(); // calling run() method directly instead of start() method
+      t2.run(); // calling run() method directly instead of start() method
+   }
+}
+In the above example, two threads are created and the run() method is called directly on the threads rather than calling a start() method.
+
+Output
+In the run() method: main
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+In the run() method: main
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4

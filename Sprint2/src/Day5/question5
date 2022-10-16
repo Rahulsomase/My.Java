@@ -1,0 +1,19 @@
+Q5) Differentiate between the Thread class and Runnable interface for creating a
+Thread? 
+ANS:-
+
+
+thread class
+1)	Each thread creates a unique object and gets associated with it.
+2) 	As each thread create a unique object, more memory required.
+3) In Java, multiple inheritance not allowed hence, after a class extends Thread class, it can not extend any other class.
+4) A user must extend thread class only if it wants to override the other methods in Thread class.
+5) 	Extending Thread class introduces tight coupling as the class contains code of Thread class and also the job assigned to the thread
+
+
+Runnable interface:-
+1) Multiple threads share the same objects.
+2) As multiple threads share the same object less memory is used.) 
+3) If a class define thread implementing the Runnable interface it has a chance of extending one class.
+4)  If you only want to specialize run method then implementing Runnable is a better option.
+5) Implementing Runnable interface introduces loose coupling as the code of Thread is separate form the job of Threads.

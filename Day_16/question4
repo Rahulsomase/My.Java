@@ -1,0 +1,28 @@
+Q4) Explain the difference between Checked and Unchecked exception?
+
+Checked Exceptions in Java :-
+- In broad terms, a checked exception (also called a logical exception) in Java is something that has gone
+ wrong in your code and is potentially recoverable. For example, if there’s a client error when calling another
+  API, we could retry from that exception and see if the API is back up and running the second time.
+  A checked exception is caught at compile time so if something throws a checked exception the compiler will enforce that you handle it.
+
+  Checked Exception Examples
+
+  import java.io.File;
+  import java.io.FileInputStream;
+
+  public class CheckedException {
+      public void readFile() {
+          String fileName = "file does not exist";
+          File file = new File(fileName);
+          FileInputStream stream = new FileInputStream(file);
+      }
+  }
+
+
+  Unchecked Exceptions in Java
+ - An unchecked exception (also known as an runtime exception) in Java is something that has gone wrong with
+   the program and is unrecoverable. Just because this is not a compile time exception,
+   meaning you do not need to handle it, that does not mean you don’t need to be concerned about it.
+  - The most common Java unchecked exception is the good old NullPointerException which is when you are trying
+   to access a variable or object that doesn’t exist.

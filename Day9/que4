@@ -1,0 +1,32 @@
+1 Overriding:
+  Same method signature in both superclass & child class
+  In overriding riding we can change the data of parent fun using overriding> We have to create same maethod as present inside
+  parent class.
+  ex:
+  class Parent {
+  void eat(){
+  sout("I am eating")
+  }
+  class child{
+  @overriding
+  // here we are using same mtd of parent
+  void eat(){
+  sout("child eat")
+  }
+  }
+
+
+2 Overloading
+Same method name but different parameters in same class
+
+ex:
+class Parent{
+
+void eat(){
+sout("I am eating");
+}
+void eat (String par){
+sout("I am eating"+par)
+}
+
+}
