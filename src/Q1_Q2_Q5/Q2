@@ -1,0 +1,13 @@
+Sr. No.  Key                   Object Level                                         Lock Class Level Lock
+1        Basic      It can be used when you want non-static method or           It can be used when we want to prevent multiple threads to enter
+                      non-static block of the code should be accessed            the synchronized block in any of all available instances on runtime
+                         by only one thread
+
+  
+2 Static/Non Static   It should always be used to make non-static               It should always be used to make static data thread safe. 
+                      data thread safe. 
+
+
+
+3  Number of Locks   Every object the class may have their own lock             Multiple objects of class may exist but there is always 
+                                                                                    one class’s class object lock available

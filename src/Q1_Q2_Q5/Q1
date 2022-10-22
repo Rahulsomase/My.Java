@@ -1,0 +1,27 @@
+                      Synchronized Method                                                                   Synchronized block
+1. in case of sync method, a thread can access only either object level         1 in case of synch block, a thread can access to the synch area either by taking that 
+   lock or class level lock of that class only.                                   class level lock,that class object level lock or any other class level lock or object
+                                                                                   level lock also. (any type of lock.)
+
+ 2.with the help of synch method one thread can enter into the that area         2 whereas with synch block a thread can enter into the sycnh area by acquiring multiple 
+    only after getting one lock.                                                                              locks simulteniosly.
+
+3. Synchronized method acquires a lock on the whole object. This means no         3 Synchronized blocks acquire a lock in object between parentheses after the synchronized keyword.
+    other thread can use any synchronized method in the whole object while          Meaning no other thread can acquire a lock on the locked object until the  
+    the method is being run by one thread.                                         synchronized block exits.
+
+4  A synchronized method uses the method receiver as a lock, ‘this’ for non      4 Synchronized blocks use the expression as a lock.
+    static methods and the enclosing class for static methods. 
+
+5 Synchronized method always locks either on current object represented by      5 Synchronized method always locks either on current object represented by class level lock,   
+    class level lock, if its static synchronized method.                            if its static synchronized method any lock to provide mutual exclusion to critical section code.
+
+6 In case of synchronized method, lock is acquired by thread when it enter      6 In case of synchronized block, thread acquires lock when they enter synchronized block and 
+   method and released when it leaves method, either normally or by throwing         released when they leave synchronized block.
+   Exception.                                                                    
+ 
+7 For synchronized methods, the lock will be held throughout the method scope.  7 In the synchronized block, the lock is held only during that block scope also referred to as 
+                                                                                  critical section.      
+                                                                                  
+8 In the synchronized block, the lock is held only during that block scope      8 A synchronized block inside a static method will acquire a lock in the object between parentheses.  
+   also referred to as critical section.                                                                                  

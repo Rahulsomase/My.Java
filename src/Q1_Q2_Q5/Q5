@@ -1,0 +1,16 @@
+Q5/- What is the Difference between the sleep and join method .
+Ans:-
+           Sleep                                                                    Join
+Sleep is from Suspending a thread based on time                 Join is from Suspending a thread conditionally
+ 
+ Thread.sleep(1000); here 1000 is in milisec.                   Thread.join();
+ 
+ Sleep will stop for the argument passed sec                    Passed thread will execute first.   
+ 
+ This method will suspend the current thread which              If a thread t1 calls join() method on another thread t2, like
+    is under execution with those many millisecond              t2.join() then t1 thread will be enter into waiting state
+    passed as  argument(1000ms=1sec).                           until t2 thread completes.
+
+   It is  static method                                         It is non static method  
+
+ 
