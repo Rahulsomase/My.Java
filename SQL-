@@ -1,0 +1,531 @@
+
+SQL - Holidays Assignments
+
+Q.1
+
+mysql> select * from programmer;
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+| EmpNo | ProjId | LastName  | FisrtName | HireDate   | Language | TaskNo | Privilege    |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+|   201 | NPR    | Gupta     | Saurav    | 1995-01-01 | VB       |     52 | Secret       |
+|   390 | KCW    | Ghosh     | Pinky     | 1993-01-05 | JAVA     |     11 | TOPSecret    |
+|   789 | RNC    | Agarwal   | Praveen   | 1993-03-08 | VB       |     11 | Secret       |
+|   134 | TIPPS  | Chaudhury | Supriyo   | 1995-07-15 | C++      |     52 | Secret       |
+|   896 | KCW    | Jha       | Ranjit    | 1997-06-15 | JAVA     |     10 | TopSecret    |
+|   345 | TIPPS  | John      | Peter     | 1999-11-15 | JAVA     |     52 | NULL         |
+|   563 | NIPPS  | Anderson  | Andy      | 1994-08-15 | C++      |     89 | Confidential |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+7 rows in set (0.01 sec)
+
+A) 
+mysql> UPDATE Programmer SET ProjId ='NIPPS', Language = 'C++' WHERE EmpNo = 201;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from programmer;
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+| EmpNo | ProjId | LastName  | FisrtName | HireDate   | Language | TaskNo | Privilege    |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+|   201 | NIPPS  | Gupta     | Saurav    | 1995-01-01 | C++      |     52 | Secret       |
+|   390 | KCW    | Ghosh     | Pinky     | 1993-01-05 | JAVA     |     11 | TOPSecret    |
+|   789 | RNC    | Agarwal   | Praveen   | 1993-03-08 | VB       |     11 | Secret       |
+|   134 | TIPPS  | Chaudhury | Supriyo   | 1995-07-15 | C++      |     52 | Secret       |
+|   896 | KCW    | Jha       | Ranjit    | 1997-06-15 | JAVA     |     10 | TopSecret    |
+|   345 | TIPPS  | John      | Peter     | 1999-11-15 | JAVA     |     52 | NULL         |
+|   563 | NIPPS  | Anderson  | Andy      | 1994-08-15 | C++      |     89 | Confidential |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+7 rows in set (0.00 sec)
+
+ C)
+
+mysql> ALTER TABLE Programmer DROP COLUMN TaskNo;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from programmer;
++-------+--------+-----------+-----------+------------+----------+--------------+
+| EmpNo | ProjId | LastName  | FisrtName | HireDate   | Language | Privilege    |
++-------+--------+-----------+-----------+------------+----------+--------------+
+|   201 | NIPPS  | Gupta     | Saurav    | 1995-01-01 | C++      | Secret       |
+|   390 | KCW    | Ghosh     | Pinky     | 1993-01-05 | JAVA     | TOPSecret    |
+|   789 | RNC    | Agarwal   | Praveen   | 1993-03-08 | VB       | Secret       |
+|   134 | TIPPS  | Chaudhury | Supriyo   | 1995-07-15 | C++      | Secret       |
+|   896 | KCW    | Jha       | Ranjit    | 1997-06-15 | JAVA     | TopSecret    |
+|   345 | TIPPS  | John      | Peter     | 1999-11-15 | JAVA     | NULL         |
+|   563 | NIPPS  | Anderson  | Andy      | 1994-08-15 | C++      | Confidential |
++-------+--------+-----------+-----------+------------+----------+--------------+
+7 rows in set (0.01 sec)
+
+
+Q. 2
+
+4)
+mysql> create table Department(DeptNo int , Name varchar(20) , LOC varchar(20));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> desc Department;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DeptNo | int         | YES  |     | NULL    |       |
+| Name   | varchar(20) | YES  |     | NULL    |       |
+| LOC    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+5)
+mysql> alter table Department change Name DName varchar(50);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Department;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DeptNo | int         | YES  |     | NULL    |       |
+| DName  | varchar(50) | YES  |     | NULL    |       |
+| LOC    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+6)
+
+mysql> insert into Department values(10 , ‘Accounts’ , ‘Newyork’);
+ERROR 1054 (42S22): Unknown column '‘Accounts’' in 'field list'
+mysql> insert into Department values(10 , 'Accounts' , 'Newyork');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Department values(20 , 'Marketing' , 'Chicago');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Department values(30 , 'Sales' , 'Atlanta');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Department values(40 , 'Research' , 'Ohio');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc Department;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DeptNo | int         | YES  |     | NULL    |       |
+| DName  | varchar(50) | YES  |     | NULL    |       |
+| LOC    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * FROM Department;
++--------+-----------+---------+
+| DeptNo | DName     | LOC     |
++--------+-----------+---------+
+|     10 | Accounts  | Newyork |
+|     20 | Marketing | Chicago |
+|     30 | Sales     | Atlanta |
+|     40 | Research  | Ohio    |
++--------+-----------+---------+
+4 rows in set (0.00 sec)
+
+7.
+
+mysql> Insert into Employee values(7001 , ‘James’ , ‘Cleark’ , 3000 , ‘2005-06-05’ , 10);
+ERROR 1054 (42S22): Unknown column '‘James’' in 'field list'
+mysql> Insert into Employee values(7001 , 'James' , 'Cleark' , 3000 , '2005-06-05' , 10);
+Query OK, 1 row affected (0.00 sec)
+
+9.
+mysql> Insert into Employee values(7002 , 'Mason' , 'President' , 10000 , '2005-06-06' , 20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into Employee values(7003 , 'Clark' , 'Manager' , 5000 , '2004-06-05' , 20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into Employee values(7004 , 'John' , 'Manager' , 6000 , '2005-06-08' , 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into Employee values(7005 , 'Blake' , 'Clerk' , 3500 , '2005-06-09' ,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+
+| EmpNo | EName | JOB       | Salary | HireDate   | DeptNo |
++-------+-------+-----------+--------+------------+--------+
+|  7001 | James | Cleark    |   3000 | 2005-06-05 |     10 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 |
+|  7003 | Clark | Manager   |   5000 | 2004-06-05 |     20 |
+|  7004 | John  | Manager   |   6000 | 2005-06-08 |     10 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 |
++-------+-------+-----------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+
+10.
+
+mysql> desc Grade;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| Grade_No  | int  | YES  |     | NULL    |       |
+| Hi_salary | int  | YES  |     | NULL    |       |
+| Lo_salary | int  | YES  |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+11.
+mysql> ALTER TABLE Grade DROP COLUMN Lo_salary;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Grade;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| Grade_No  | int  | YES  |     | NULL    |       |
+| Hi_salary | int  | YES  |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+12.
+mysql> ALTER TABLE Grade ADD Low_salary int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Grade;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| Grade_No   | int  | YES  |     | NULL    |       |
+| Hi_salary  | int  | YES  |     | NULL    |       |
+| Low_salary | int  | YES  |     | NULL    |       |
++------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+13 .
+
+mysql> Insert into Grade values(1 , 2000 , 500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> Insert into Grade values(2 , 3500 , 2100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> Insert into Grade values(3 , 6000 , 3600);
+Query OK, 1 row affected (0.00 sec)
+
+
+
+mysql> Insert into Grade values(4 , 15000 , 6100);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM GRADE;
++----------+-----------+------------+
+| Grade_No | Hi_salary | Low_salary |
++----------+-----------+------------+
+|        1 |      2000 |        500 |
+|        2 |      3500 |       2100 |
+|        3 |      6000 |       3600 |
+|        4 |     15000 |       6100 |
++----------+-----------+------------+
+4 rows in set (0.00 sec)
+
+14 .
+
+15.
+mysql> UPDATE Employee SET Salary = 3500 WHERE EmpNo = 7001;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+
+| EmpNo | EName | JOB       | Salary | HireDate   | DeptNo |
++-------+-------+-----------+--------+------------+--------+
+|  7001 | James | Cleark    |   3500 | 2005-06-05 |     10 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 |
+|  7003 | Clark | Manager   |   5000 | 2004-06-05 |     20 |
+|  7004 | John  | Manager   |   6000 | 2005-06-08 |     10 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 |
++-------+-------+-----------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+16.
+mysql> UPDATE Employee SET Salary = Salary+1000 WHERE JOB = 'Manager';
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+
+| EmpNo | EName | JOB       | Salary | HireDate   | DeptNo |
++-------+-------+-----------+--------+------------+--------+
+|  7001 | James | Cleark    |   3500 | 2005-06-05 |     10 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 |
+|  7003 | Clark | Manager   |   6000 | 2004-06-05 |     20 |
+|  7004 | John  | Manager   |   7000 | 2005-06-08 |     10 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 |
++-------+-------+-----------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+17.
+
+mysql> UPDATE Employee SET Salary = Salary-100 WHERE DeptNo = 10;
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+
+| EmpNo | EName | JOB       | Salary | HireDate   | DeptNo |
++-------+-------+-----------+--------+------------+--------+
+|  7001 | James | Cleark    |   3400 | 2005-06-05 |     10 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 |
+|  7003 | Clark | Manager   |   6000 | 2004-06-05 |     20 |
+|  7004 | John  | Manager   |   6900 | 2005-06-08 |     10 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 |
++-------+-------+-----------+--------+------------+--------+
+5 rows in set (0.01 sec)
+
+18.
+
+mysql> ALTER TABLE Employee ADD COLUMN COMM int;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| EmpNo    | int         | YES  |     | NULL    |       |
+| EName    | varchar(20) | YES  |     | NULL    |       |
+| JOB      | varchar(20) | YES  |     | NULL    |       |
+| Salary   | int         | YES  |     | NULL    |       |
+| HireDate | date        | YES  |     | NULL    |       |
+| DeptNo   | int         | YES  |     | NULL    |       |
+| COMM     | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+20.
+mysql> DELETE FROM Employee WHERE hiredt < '2005-06-06';
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7004 | John  | Manager   |   6900 | 2005-06-08 |     10 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+21.
+mysql> DELETE FROM Employee WHERE Salary < 3000;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7004 | John  | Manager   |   6900 | 2005-06-08 |     10 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+22.
+
+mysql> SELECT * FROM Employee where DeptNo = 10;
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 | NULL |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set (0.00 sec)
+
+23.
+
+mysql> SELECT * FROM Employee where DeptNo = 10 and JOB= 'Manager';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 | NULL |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set (0.00 sec)
+
+24.
+mysql> SELECT * FROM Employee where Salary BETWEEN 3000 AND 5000;
++-------+-------+-------+--------+------------+--------+------+
+| EmpNo | EName | JOB   | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-------+--------+------------+--------+------+
+|  7005 | Blake | Clerk |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-------+--------+------------+--------+------+
+1 row in set (0.01 sec)
+
+
+25.
+
+mysql> DELETE FROM Employee WHERE hiredt > '2005-07-10';
+Query OK, 0 rows affected (0.00 sec)
+
+
+26.
+mysql> SELECT * FROM Employee where JOB = 'Manager' OR 'President';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 | NULL |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set, 1 warning (0.00 sec)
+
+27.
+mysql> SELECT * FROM Employee where DeptNo = 10 OR 20 AND 'Manager';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 | NULL |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set, 1 warning (0.00 sec)
+
+28.
+
+mysql> UPDATE Employee SET COMM = 500 WHERE DeptNo=10;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7004 | John  | Manager   |   6900 | 2005-06-08 |     10 |  500 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.01 sec)
+
+
+29.
+
+mysql> SELECT * FROM Employee WHERE COMM IS NULL;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+2 rows in set (0.00 sec)
+
+
+30.
+mysql> SELECT * FROM Employee WHERE JOB != 'President' OR 'Manager';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 |  500 |
+|  7005 | Blake | Clerk   |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+---------+--------+------------+--------+------+
+2 rows in set, 1 warning (0.00 sec)
+
+
+31.
+
+mysql> SELECT * FROM Employee WHERE EName LIKE 'j%';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   6900 | 2005-06-08 |     10 |  500 |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set (0.00 sec)
+
+
+32.
+mysql> SELECT * FROM Employee WHERE EName LIKE '%A%';
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+2 rows in set (0.00 sec)
+
+34 .
+35 .
+mysql> UPDATE Employee SET Salary = Salary + (Salary *10/100) WHERE JOB = 'Manager';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Employee;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7004 | John  | Manager   |   7590 | 2005-06-08 |     10 |  500 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+
+36
+mysql> SELECT * FROM Employee ORDER BY EName desc;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7004 | John  | Manager   |   7590 | 2005-06-08 |     10 |  500 |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+
+37.
+
+mysql> SELECT * FROM Employee e ORDER BY e.DeptNo asc,e.JOB asc;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7004 | John  | Manager   |   7590 | 2005-06-08 |     10 |  500 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Employee ORDER BY JOB,DeptNo asc;
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
+|  7004 | John  | Manager   |   7590 | 2005-06-08 |     10 |  500 |
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+3 rows in set (0.00 sec)
+
+
+
+38.
+
+
+39.
+mysql> SELECT LOWER(EName) FROM Employee;
++--------------+
+| LOWER(EName) |
++--------------+
+| mason        |
+| john         |
+| blake        |
++--------------+
+3 rows in set (0.00 sec)
+
+
+40.
+
+mysql> SELECT * FROM Employee WHERE EName LIKE '%A%';
++-------+-------+-----------+--------+------------+--------+------+
+| EmpNo | EName | JOB       | Salary | hiredt     | DeptNo | COMM |
++-------+-------+-----------+--------+------------+--------+------+
+|  7002 | Mason | President |  10000 | 2005-06-06 |     20 | NULL |
+|  7005 | Blake | Clerk     |   3500 | 2005-06-09 |     30 | NULL |
++-------+-------+-----------+--------+------------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Employee WHERE EName OR JOB LIKE '%A%';
++-------+-------+---------+--------+------------+--------+------+
+| EmpNo | EName | JOB     | Salary | hiredt     | DeptNo | COMM |
++-------+-------+---------+--------+------------+--------+------+
+|  7004 | John  | Manager |   7590 | 2005-06-08 |     10 |  500 |
++-------+-------+---------+--------+------------+--------+------+
+1 row in set, 3 warnings (0.01 sec)
