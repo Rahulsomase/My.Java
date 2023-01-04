@@ -1,0 +1,41 @@
+
+CONATAINERS:-
+The org.springframework.beans.factory.BeanFactory is the actual representation of the Spring IoC container that is responsible for containing and otherwise managing the aforementioned beans.
+
+The BeanFactory interface is the central IoC container interface in Spring. Its responsibilities include instantiating or sourcing application objects, configuring such objects, and assembling the dependencies between these objects.
+
+There are a number of implementations of the BeanFactory interface that come supplied straight out-of-the-box with Spring. The most commonly used BeanFactory implementation is the XmlBeanFactory class. This implementation allows you to express the objects that compose your application, and the doubtless rich interdependencies between such objects, in terms of XML. The XmlBeanFactory takes this XML configuration metadata and uses it to create a fully configured system or application.
+
+
+BEANS:-
+A Spring IoC container manages one or more beans. These beans are created using the configuration metadata that has been supplied to the container (typically in the form of XML <bean/> definitions).
+
+Within the container itself, these bean definitions are represented as BeanDefinition objects, which contain (among other information) the following metadata:
+
+a package-qualified class name: typically this is the actual implementation class of the bean being defined.
+
+bean behavioral configuration elements, which state how the bean should behave in the container (scope, lifecycle callbacks, and so forth).
+
+references to other beans which are needed for the bean to do its work; these references are also called collaborators or dependencies.
+
+other configuration settings to set in the newly created object. An example would be the number of connections to use in a bean that manages a connection pool, or the size limit of the pool.
+
+
+How to activate the Spring Container in our application.?
+1. Create a project with a name SpringExample and a package packagecom.example. These should be under src folder of the created project.
+2. Add the needed Spring libraries using Add External JARs.
+3. Create Java classes HelloWorld and MainApp under the package packagecom .example.
+4. Create Beans config file Beans.xml under src folder.
+5. At last, create content of all Java files and Beans configuration file and run the file as below.
+6. The code of HelloWorld.java is as shown.
+
+package com.example;
+public class HelloWorld {
+private String message;
+public void setMessage(String message){
+this.message = message;
+}
+public void getMessage(){
+System.out.println("Your Message : " + message);
+}
+}
